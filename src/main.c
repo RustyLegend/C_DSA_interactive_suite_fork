@@ -71,9 +71,10 @@ void run_legacy_menu(void)
             "click 15 for Probabilistic Data Structures Module\n"
             "click 16 for Spatial Indexing Module\n"
             "click 17 for Interactive Algorithm Quick-Search Finder\n"
-            "click 18 for Developer Console & System Utilities\n"
+            "click 18 for Cache Simulator\n"
+            "click 19 for Developer Console & System Utilities\n"
             "\nenter choice (\'-1\' to exit, or \'help\') : ",
-            1, 18 /* limits */
+            1, 19 /* limits */
         );
 
         if (status == INPUT_EXIT_SIGNAL)
@@ -281,6 +282,9 @@ void run_legacy_menu(void)
                 run_algorithm_search_menu();
                 break;
             case 18:
+                cache_simulator_demo();
+                break;
+            case 19:
                 while (1)
                 {
                     int dev_choice;
@@ -291,11 +295,10 @@ void run_legacy_menu(void)
                                        "2. Interactive Step-Debugger\n"
                                        "3. Raw Memory Layout Inspector / Hexdump Visualizer\n"
                                        "4. System Settings (Animation Speed, Debugger toggles)\n"
-                                       "5. Cache Replacement Simulator\n"
-                                       "6. Stochastic Fuzz Testing Engine\n"
-                                       "7. Empirical Big-O Verifier\n"
-                                       "8. Standalone File Exporter Engine\n"
-                                       "9. State Serialization & Deserialization Engine\n"
+                                       "5. Stochastic Fuzz Testing Engine\n"
+                                       "6. Empirical Big-O Verifier\n"
+                                       "7. Standalone File Exporter Engine\n"
+                                       "8. State Serialization & Deserialization Engine\n"
                                        "\nenter choice (\'-1\' to exit) : ",
                                        1, 9);
                     if (dev_status == INPUT_EXIT_SIGNAL)
