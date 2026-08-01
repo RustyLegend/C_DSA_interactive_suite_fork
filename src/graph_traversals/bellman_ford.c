@@ -34,8 +34,13 @@ void bellman_ford(weightedGraph* graph, int start)
                 int v = current->destination;
                 int weight = current->weight;
 
-                if (dist[u] != INT_MAX && dist[u] + weight < dist[v])
-                    dist[v] = dist[u] + weight;
+                long long tentative = (long long)dist[u] + weight;
+                int new_dist = (tentative < INT_MIN) ? INT_MIN : (int)tentative;
+
+                if (dist[u] != INT_MAX && new_dist < dist[v])
+                {
+                    dist[v] = new_dist;
+                }
 
                 current = current->next;
             }
@@ -50,7 +55,9 @@ void bellman_ford(weightedGraph* graph, int start)
         {
             int v = current->destination;
             int weight = current->weight;
-            if (dist[u] != INT_MAX && dist[u] + weight < dist[v])
+            long long tentative = (long long)dist[u] + weight;
+            int new_dist = (tentative < INT_MIN) ? INT_MIN : (int)tentative;
+            if (dist[u] != INT_MAX && new_dist < dist[v])
             {
                 end_t = clock();
                 total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
