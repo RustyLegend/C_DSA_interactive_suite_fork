@@ -47,11 +47,11 @@ void find_unique_demo(void)
         if (!valid)
             continue;
 
-        printf("\n--- Visualizing Unique Element (XOR) ---\n");
+        printf("\n\033[1;36m--- Visualizing Unique Element (XOR) ---\033[0m\n");
         int running_xor = 0;
         for (int i = 0; i < n; i++)
         {
-            printf("Step %d: processing arr[%d] = %d\n", i + 1, i, arr[i]);
+            printf("\033[1;35mStep %d: processing arr[%d] = %d\033[0m\n", i + 1, i, arr[i]);
             printf("  Current XOR = ");
             print_binary_32((unsigned int)running_xor);
             printf("  (%d)\n", running_xor);
@@ -74,7 +74,7 @@ void find_unique_demo(void)
             press_enter_to_continue();
         }
 
-        printf("Final Unique Element: %d\n", running_xor);
+        printf("\033[1;32mFinal Unique Element: %d\033[0m\n", running_xor);
     }
 }
 
@@ -123,22 +123,22 @@ void generate_subsets_demo(void)
         if (!valid)
             continue;
 
-        printf("\n--- Visualizing Subset Generation (Bitmasking) ---\n");
+        printf("\n\033[1;36m--- Visualizing Subset Generation (Bitmasking) ---\033[0m\n");
         int total_subsets = (1 << n);
 
         for (int mask = 0; mask < total_subsets; mask++)
         {
             printf("Mask %3d: ", mask);
             print_binary_32_highlight((unsigned int)mask, (unsigned int)mask, "\033[1;33m");
-            printf("\nSubset:   { ");
+            printf("\033[1;32mSubset:   { \033[0m");
             for (int j = 0; j < n; j++)
             {
                 if (mask & (1 << j))
                 {
-                    printf("%d ", arr[j]);
+                    printf("\033[1;33m%d \033[0m", arr[j]);
                 }
             }
-            printf("}\n\n");
+            printf("\033[1;32m}\033[0m\n\n");
 
             if ((mask + 1) % 8 == 0 && (mask + 1) != total_subsets)
             {
@@ -146,6 +146,6 @@ void generate_subsets_demo(void)
                 press_enter_to_continue();
             }
         }
-        printf("All %d subsets generated.\n", total_subsets);
+        printf("\033[1;32mAll %d subsets generated.\033[0m\n", total_subsets);
     }
 }

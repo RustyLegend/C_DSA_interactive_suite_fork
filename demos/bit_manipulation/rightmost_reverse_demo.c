@@ -21,7 +21,7 @@ void rightmost_set_bit_demo(void)
         if (status == 0)
             continue;
 
-        printf("\n--- Visualizing Rightmost Set Bit Operations ---\n");
+        printf("\n\033[1;36m--- Visualizing Rightmost Set Bit Operations ---\033[0m\n");
         unsigned int un = (unsigned int)n;
 
         unsigned int rsb = get_rightmost_set_bit(n);
@@ -63,10 +63,10 @@ void reverse_bits_demo(void)
 
         unsigned int un = (unsigned int)n;
         unsigned int result = 0;
-        printf("\n--- Visualizing 32-bit Reversal ---\n");
-        printf("Initial n:\n");
+        printf("\n\033[1;36m--- Visualizing 32-bit Reversal ---\033[0m\n");
+        printf("\033[1;35mInitial n:\033[0m\n");
         print_binary_32(un);
-        printf("\n\nTracing reversal (showing every 8th step):\n");
+        printf("\n\n\033[1;36mTracing reversal (showing every 8th step):\033[0m\n");
 
         for (int i = 0; i < 32; i++)
         {
@@ -77,7 +77,7 @@ void reverse_bits_demo(void)
 
             if (i % 8 == 0 || i == 31)
             {
-                printf("Step %2d: n = ", i + 1);
+                printf("\033[1;35mStep %2d: n = \033[0m", i + 1);
                 print_binary_32_highlight(un, highlight_mask_n, "\033[1;31m");
                 printf("  |  res = ");
                 print_binary_32_highlight(result, highlight_mask_res, "\033[1;32m");
@@ -85,7 +85,7 @@ void reverse_bits_demo(void)
             }
         }
 
-        printf("\nFinal Reversed:\n");
+        printf("\n\033[1;32mFinal Reversed:\033[0m\n");
         print_binary_32(result);
         printf("\nreverse_bits(%d) = %u\n", n, result);
     }

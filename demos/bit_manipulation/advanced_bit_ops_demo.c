@@ -21,7 +21,7 @@ void count_set_bits_demo(void)
         if (status == 0)
             continue;
 
-        printf("\n--- Visualizing Brian Kernighan's Algorithm ---\n");
+        printf("\n\033[1;36m--- Visualizing Brian Kernighan's Algorithm ---\033[0m\n");
         unsigned int un = (unsigned int)n;
         int count = 0;
 
@@ -37,7 +37,7 @@ void count_set_bits_demo(void)
             unsigned int next_un = un & (un - 1);
             unsigned int flipped_bit = un ^ next_un;
 
-            printf("Step %d:\n", count + 1);
+            printf("\033[1;35mStep %d:\033[0m\n", count + 1);
             printf("  n       = ");
             print_binary_32_highlight(un, flipped_bit, "\033[1;31m");
             printf("  (%u)\n", un);
@@ -59,7 +59,7 @@ void count_set_bits_demo(void)
                 press_enter_to_continue();
             }
         }
-        printf("Final Count: %d\n", count);
+        printf("\033[1;32mFinal Count: %d\033[0m\n", count);
         printf("Press Enter to continue...\n");
         press_enter_to_continue();
     }
@@ -86,11 +86,11 @@ void power_of_two_demo(void)
 
         if (is_power_of_two(n))
         {
-            printf("\n%d IS a power of two.\n", n);
+            printf("\n\033[1;32m%d IS a power of two.\033[0m\n", n);
         }
         else
         {
-            printf("\n%d is NOT a power of two.\n", n);
+            printf("\n\033[1;31m%d is NOT a power of two.\033[0m\n", n);
         }
     }
 }
@@ -128,11 +128,11 @@ void xor_swap_demo(void)
         if (b_status == 0)
             continue;
 
-        printf("\n--- Visualizing XOR Swap Step-by-Step ---\n");
+        printf("\n\033[1;36m--- Visualizing XOR Swap Step-by-Step ---\033[0m\n");
         unsigned int ua = (unsigned int)a;
         unsigned int ub = (unsigned int)b;
 
-        printf("Initial State:\n");
+        printf("\033[1;35mInitial State:\033[0m\n");
         printf("  A = ");
         print_binary_32(ua);
         printf("  (%d)\n", a);
@@ -142,7 +142,7 @@ void xor_swap_demo(void)
         printf("Press Enter to continue...\n");
         press_enter_to_continue();
 
-        printf("Step 1: A = A ^ B\n");
+        printf("\033[1;35mStep 1: A = A ^ B\033[0m\n");
         unsigned int new_a = ua ^ ub;
         printf("  A = ");
         print_binary_32_highlight(ua, ua ^ new_a, "\033[1;33m");
@@ -156,7 +156,7 @@ void xor_swap_demo(void)
         printf("Press Enter to continue...\n");
         press_enter_to_continue();
 
-        printf("Step 2: B = A ^ B\n");
+        printf("\033[1;35mStep 2: B = A ^ B\033[0m\n");
         unsigned int new_b = ua ^ ub;
         printf("  A = ");
         print_binary_32(ua);
@@ -170,7 +170,7 @@ void xor_swap_demo(void)
         printf("Press Enter to continue...\n");
         press_enter_to_continue();
 
-        printf("Step 3: A = A ^ B\n");
+        printf("\033[1;35mStep 3: A = A ^ B\033[0m\n");
         new_a = ua ^ ub;
         printf("  A = ");
         print_binary_32_highlight(ua, ua ^ new_a, "\033[1;33m");
@@ -182,9 +182,9 @@ void xor_swap_demo(void)
         printf("  (New A)\n\n");
         ua = new_a;
 
-        printf("Final Swapped State:\n");
-        printf("  A = %d\n", (int)ua);
-        printf("  B = %d\n", (int)ub);
+        printf("\033[1;32mFinal Swapped State:\033[0m\n");
+        printf("  A = \033[1;33m%d\033[0m\n", (int)ua);
+        printf("  B = \033[1;33m%d\033[0m\n", (int)ub);
 
         /* Actually swap the real variables so it's formally correct */
         xor_swap(&a, &b);
