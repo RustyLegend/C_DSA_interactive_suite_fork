@@ -54,15 +54,15 @@ void bitwise_visualizer_demo(void)
         }
         printf("\n");
 
-        printf("A&B = ");
+        printf("\033[1;32mA&B = \033[0m");
         print_binary_32(ua & ub);
         printf("  (%d)\n", a & b);
 
-        printf("A|B = ");
+        printf("\033[1;33mA|B = \033[0m");
         print_binary_32(ua | ub);
         printf("  (%d)\n", a | b);
 
-        printf("A^B = ");
+        printf("\033[1;35mA^B = \033[0m");
         print_binary_32(ua ^ ub);
         printf("  (%d)\n", a ^ b);
 
