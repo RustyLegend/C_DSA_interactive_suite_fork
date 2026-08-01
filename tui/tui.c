@@ -258,6 +258,9 @@ static Entry ENTRIES[] = {
     {"d-Ary Heap", run_dary_demo, 0, 0, 1},
     {"Treap", run_treap_demo, 0, 0, 1},
 
+    {"Cache Replacement Simulator", NULL, 1, 0, 0},
+    {"Cache Replacement Simulator", cache_simulator_demo, 0, 0, 1},
+
     {"hashing", NULL, 1, 0, 0},
     {"Linear Probing", linear_probing_demo, 0, 0, 1},
     {"Separate Chaining", separate_chaining_demo, 0, 0, 1},
@@ -335,7 +338,6 @@ static Entry ENTRIES[] = {
 
     {"Algorithm Step Debugger", debugger_demo, 0, 0, 1},
     {"Memory Layout Inspector", memory_inspector_demo, 0, 0, 1},
-    {"Cache Replacement Simulator", cache_simulator_demo, 0, 0, 1},
     {"Stochastic Fuzz Testing", fuzzer_demo, 0, 0, 1},
     {"Empirical Big-O Verifier", bigo_verifier_demo, 0, 0, 1},
     {"Standalone File Exporter", file_exporter_demo, 0, 0, 1},
