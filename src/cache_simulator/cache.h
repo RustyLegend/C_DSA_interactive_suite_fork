@@ -101,7 +101,8 @@ bool cache_access_opt(Cache* cache, int page_id, const int* ref_str, int ref_len
 bool cache_access_clock(Cache* cache, int page_id, bool is_write);
 
 /**
- * @brief Accesses a page using the Enhanced Second-Chance algorithm (using reference & dirty bits).
+ * @brief Accesses a page using the Enhanced Second-Chance algorithm (using reference
+ *        & dirty bits).
  * @param cache Pointer to Cache structure.
  * @param page_id Target page ID.
  * @param is_write True if write operation.

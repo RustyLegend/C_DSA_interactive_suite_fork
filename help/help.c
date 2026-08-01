@@ -109,7 +109,7 @@ void launch_help_page(void)
                 help_string_compression_menu();
                 break;
             case 11:
-                help_bit_manipulation_menu();
+                help_dynamic_programming_menu();
                 break;
             case 12:
                 help_spatial_indexing_menu();
@@ -118,7 +118,7 @@ void launch_help_page(void)
                 help_probabilistic_data_structures_menu();
                 break;
             case 14:
-                help_advanced_graph_algorithms_menu();
+                help_error_correction_menu();
                 break;
             case 15:
                 help_bit_manipulation_menu();
@@ -148,7 +148,8 @@ void launch_help_page(void)
                 printf("    designed to help you visualize and interact with Data Structures\n");
                 printf("    and Algorithms implemented in C.\n\n");
                 printf("NAVIGATION & COMMANDS\n");
-                printf("    help               - Launches this help page from any input prompt.\n");
+                printf("    help               - Launches this help page from any input\n"
+                       "                         prompt.\n");
                 printf("    -1                 - Exits the current menu, sub-suite, or app.\n");
                 printf("    Numbers            - Choose specific menu items or menu paths.\n\n");
                 printf("CLI ARGUMENTS & FLAGS\n");

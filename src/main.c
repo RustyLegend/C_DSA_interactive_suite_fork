@@ -68,10 +68,10 @@ void run_legacy_menu(void)
             "click 12 for string processing & compression algorithms demo\n"
             "click 13 for advanced heaps & priority queues suite demo\n"
             "click 14 for Bit Manipulation demo\n"
-            "click 15 for Developer Console & System Utilities\n"
-            "click 16 for Probabilistic Data Structures Module\n"
-            "click 17 for Spatial Indexing Module\n"
-            "click 18 for Interactive Algorithm Quick-Search Finder\n"
+            "click 15 for Probabilistic Data Structures Module\n"
+            "click 16 for Spatial Indexing Module\n"
+            "click 17 for Interactive Algorithm Quick-Search Finder\n"
+            "click 18 for Developer Console & System Utilities\n"
             "\nenter choice (\'-1\' to exit, or \'help\') : ",
             1, 18 /* limits */
         );
@@ -272,6 +272,15 @@ void run_legacy_menu(void)
                 bit_manipulation_demo();
                 break;
             case 15:
+                probabilistic_ds_demo();
+                break;
+            case 16:
+                spatial_indexing_demo();
+                break;
+            case 17:
+                run_algorithm_search_menu();
+                break;
+            case 18:
                 while (1)
                 {
                     int dev_choice;
@@ -294,59 +303,24 @@ void run_legacy_menu(void)
                     if (dev_status == 0)
                         continue;
                     if (dev_choice == 1)
-                    {
-                        display_header("Algorithm Benchmarking & Profiling");
                         benchmark_menu_demo();
-                    }
                     else if (dev_choice == 2)
                         debugger_demo();
                     else if (dev_choice == 3)
-                    {
-                        display_header("Raw Memory Layout Inspector");
                         memory_inspector_demo();
-                    }
                     else if (dev_choice == 4)
-                    {
-                        display_header("Settings");
                         settings_menu_demo();
-                    }
                     else if (dev_choice == 5)
-                    {
-                        display_header("Cache Replacement Simulator");
                         cache_simulator_demo();
-                    }
                     else if (dev_choice == 6)
-                    {
-                        display_header("Stochastic Fuzz Testing Engine");
                         fuzzer_demo();
-                    }
                     else if (dev_choice == 7)
-                    {
-                        display_header("Empirical Big-O Verifier");
                         bigo_verifier_demo();
-                    }
                     else if (dev_choice == 8)
-                    {
-                        display_header("Standalone File Exporter Engine");
                         file_exporter_demo();
-                    }
                     else if (dev_choice == 9)
-                    {
-                        display_header("State Serialization Engine");
                         serialization_demo();
-                    }
                 }
-                break;
-            case 16:
-                display_header("Probabilistic Data Structures Module");
-                probabilistic_ds_demo();
-                break;
-            case 17:
-                display_header("Spatial Indexing Module");
-                spatial_indexing_demo();
-                break;
-            case 18:
-                run_algorithm_search_menu();
                 break;
         }
     }

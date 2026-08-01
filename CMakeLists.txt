@@ -55,12 +55,14 @@ set(SRC_DIRS
     demos/job_scheduling
     demos/process_synchronization
     demos/compression
+    demos/cache_simulator
     features/telemetry
     features/serialization
     features/dp_visualizer
     features/memory_inspector
     features/bigo_verifier
     features/file_exporter
+    features/fuzzy_tester
     src/bit_manipulation
     src/probabilistic_data_structures
     demos/probabilistic_data_structures
