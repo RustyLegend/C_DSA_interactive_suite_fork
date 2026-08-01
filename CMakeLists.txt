@@ -54,6 +54,7 @@ set(SRC_DIRS
     demos/hashing
     demos/job_scheduling
     demos/process_synchronization
+    demos/compression
     demos/cache_simulator
     features/telemetry
     features/serialization
