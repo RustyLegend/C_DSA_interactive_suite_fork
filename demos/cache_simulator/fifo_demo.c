@@ -66,7 +66,8 @@ void cache_fifo_demo(void)
 
                 printf("\nAccessing Page %d (%s)\n", page, choice == 2 ? "WRITE" : "READ");
 
-                printf("%s\n", hit ? "CACHE HIT!" : "CACHE MISS!");
+                printf("%s\n",
+                       hit ? "\033[1;32mCACHE HIT!\033[0m" : "\033[1;31mCACHE MISS!\033[0m");
 
                 sleep_seconds(1.0f);
                 break;
