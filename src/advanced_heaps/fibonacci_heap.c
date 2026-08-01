@@ -120,14 +120,6 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
         return NULL;
     }
 
-    /* Max degree for any node in Fibonacci heap of size n is bounded by O(log n) */
-    /* An array of size 64 is more than enough for up to 2^60 elements */
-    FibonacciNode* arr[64];
-    for (int i = 0; i < 64; i++)
-    {
-        arr[i] = NULL;
-    }
-
     /* Count number of roots in the list to avoid infinite loops during updates */
     int num_roots = 0;
     FibonacciNode* x = min_node;
@@ -138,6 +130,24 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
             num_roots++;
             x = x->right;
         } while (x != min_node);
+    }
+
+    /* Max degree for any node in Fibonacci heap is theoretically bounded,
+       but dynamically reallocating is safer to avoid stack corruption. */
+    int arr_capacity = num_roots + 2;
+    if (arr_capacity < 64)
+    {
+        arr_capacity = 64;
+    }
+
+    FibonacciNode** arr = (FibonacciNode**)malloc(arr_capacity * sizeof(FibonacciNode*));
+    if (arr == NULL)
+    {
+        return min_node;
+    }
+    for (int i = 0; i < arr_capacity; i++)
+    {
+        arr[i] = NULL;
     }
 
     /* Allocate roots array to iterate safely */
@@ -157,8 +167,33 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
     {
         x = roots[i];
         int d = x->degree;
-        while (d < 64 && arr[d] != NULL)
+        while (1)
         {
+            if (d >= arr_capacity)
+            {
+                int new_capacity = d * 2 + 1;
+                FibonacciNode** new_arr =
+                    (FibonacciNode**)realloc(arr, new_capacity * sizeof(FibonacciNode*));
+                if (new_arr != NULL)
+                {
+                    for (int j = arr_capacity; j < new_capacity; j++)
+                    {
+                        new_arr[j] = NULL;
+                    }
+                    arr = new_arr;
+                    arr_capacity = new_capacity;
+                }
+                else
+                {
+                    break; /* Allocation failed, break loop to prevent out-of-bounds */
+                }
+            }
+
+            if (arr[d] == NULL)
+            {
+                break;
+            }
+
             FibonacciNode* y = arr[d];
             if (x->key > y->key)
             {
@@ -171,7 +206,7 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
             arr[d] = NULL;
             d++;
         }
-        if (d < 64)
+        if (d < arr_capacity)
         {
             arr[d] = x;
         }
@@ -181,7 +216,7 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
 
     /* Reconstruct the root list from the array of consolidated trees */
     FibonacciNode* new_min = NULL;
-    for (int i = 0; i < 64; i++)
+    for (int i = 0; i < arr_capacity; i++)
     {
         if (arr[i] != NULL)
         {
@@ -202,6 +237,7 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
         }
     }
 
+    free(arr);
     return new_min;
 }
 

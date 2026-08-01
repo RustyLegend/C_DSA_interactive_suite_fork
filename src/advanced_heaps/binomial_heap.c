@@ -61,11 +61,13 @@ static BinomialNode* binomial_heap_merge_lists(BinomialNode* head1, BinomialNode
     {
         if (head1->degree <= head2->degree)
         {
+            head1->parent = NULL;
             *tail_ref = head1;
             head1 = head1->sibling;
         }
         else
         {
+            head2->parent = NULL;
             *tail_ref = head2;
             head2 = head2->sibling;
         }
@@ -74,10 +76,22 @@ static BinomialNode* binomial_heap_merge_lists(BinomialNode* head1, BinomialNode
 
     if (head1 != NULL)
     {
+        BinomialNode* curr = head1;
+        while (curr != NULL)
+        {
+            curr->parent = NULL;
+            curr = curr->sibling;
+        }
         *tail_ref = head1;
     }
     else
     {
+        BinomialNode* curr = head2;
+        while (curr != NULL)
+        {
+            curr->parent = NULL;
+            curr = curr->sibling;
+        }
         *tail_ref = head2;
     }
 

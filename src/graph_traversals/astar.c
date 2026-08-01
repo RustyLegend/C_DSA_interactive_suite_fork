@@ -142,6 +142,7 @@ void astar(weightedGraph* graph, int start, int dest, int h[])
     if (cost == -1)
     {
         printf("Astar failed");
+        free(parent);
         return;
     }
 
