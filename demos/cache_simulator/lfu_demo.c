@@ -79,7 +79,8 @@ void cache_lfu_demo(void)
 
                 bool hit = cache_access_lfu(&cache, page, choice == 2);
 
-                printf("\n%s : Page %d\n", hit ? "CACHE HIT" : "CACHE MISS", page);
+                printf("\n%s : Page %d\n",
+                       hit ? "\033[1;32mCACHE HIT\033[0m" : "\033[1;31mCACHE MISS\033[0m", page);
 
                 sleep_seconds(1.0f);
                 break;

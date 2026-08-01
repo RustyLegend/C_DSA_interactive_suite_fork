@@ -163,7 +163,7 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     {
         if (i == cache->fifo_index)
         {
-            printf("      ▲      ");
+            printf("\033[1;33m      ▲      \033[0m");
         }
         else
         {
@@ -176,7 +176,7 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     {
         if (i == cache->fifo_index)
         {
-            printf("  (Clock Hand) ");
+            printf("\033[1;33m  (Clock Hand) \033[0m");
         }
         else
         {
